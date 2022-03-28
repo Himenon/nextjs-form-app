@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom/server";
 import express from "express";
 import { getUser, generateToken, setUser } from "./utils";
 import Layout from "../layout/Layout";
-import Form, { FormProps } from "../components/form";
+import Complete, { CompleteProps } from "../components/complete";
 
 const router = express.Router();
 
@@ -11,17 +11,12 @@ router.post("/", (req, res) => {
   const user = getUser(req);
   if (user && user.token === req.body._token) {
     const token = generateToken();
-    const props: FormProps = {
-      formTitle: "確認画面",
+    const props: CompleteProps = {
       message: req.body.message,
-      _token: token,
-      readOnly: true,
-      actinoUrl: "/complete",
-      submitMessage: "確定する",
     };
     const Element = (
       <Layout>
-        <Form {...props} />
+        <Complete {...props} />
       </Layout>
     );
     const html = ReactDOM.renderToStaticMarkup(Element);

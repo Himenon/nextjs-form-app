@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import next from "next";
 import topRouter from ".//top";
 import confirmRouter from "./confirm";
-
+import completeRouter from ".//complete";
 
 const port = parseInt(process.env.PORT || "4000", 10);
 const dev = process.env.NODE_ENV !== "production";
@@ -33,6 +33,9 @@ const run = async () => {
   const handler = app.getRequestHandler();
   server.use("/", topRouter);
   server.use("/confirm", confirmRouter);
+  server.use("/complete", completeRouter);
+
+  
   server.all("*", (req, res) => {
     return handler(req, res);
   });

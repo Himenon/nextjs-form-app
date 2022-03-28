@@ -15,9 +15,7 @@ export const Complete: React.VFC<CompleteProps> = (props) => {
         <h2>The following information has been received</h2>
         <div>
           <p>Message</p>
-          <pre>
-            {props.message}
-          </pre>
+          <pre>{props.message}</pre>
         </div>
         <div>
           <Link href={props.nextPageUri}>To Next</Link>

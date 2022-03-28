@@ -7,7 +7,7 @@ function About() {
       <p>
         Sample form application using next.js, which can be realised by using custom-server.
         <br />
-        <Link href="https://nextjs.org/docs/advanced-features/custom-server" >Custom Server - next.js</Link>
+        <Link href="https://nextjs.org/docs/advanced-features/custom-server">Custom Server - next.js</Link>
       </p>
       <p>
         Custom servers have hot reload disabled and must be hot reloaded using nodemon.

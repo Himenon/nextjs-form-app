@@ -35,7 +35,6 @@ const run = async () => {
   server.use("/confirm", confirmRouter);
   server.use("/complete", completeRouter);
 
-  
   server.all("*", (req, res) => {
     return handler(req, res);
   });

@@ -7,7 +7,6 @@ import Form, { FormProps } from "../components/form";
 
 const router = express.Router();
 
-
 const Page: React.VFC<FormProps> = (props) => {
   return (
     <Layout>
@@ -15,7 +14,6 @@ const Page: React.VFC<FormProps> = (props) => {
     </Layout>
   );
 };
-
 
 router.post("/", (req, res) => {
   const user = getUser(req);

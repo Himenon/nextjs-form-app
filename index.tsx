@@ -1,10 +1,6 @@
-import type { GetServerSidePropsContext, NextPage } from "next/types";
+import type { NextPage } from "next";
 
-export interface Props {
-
-}
-
-const Home: NextPage<Props> = () => {
+const Home: NextPage = () => {
   return (
     <div>
       <form action="/confirm" method="post">
@@ -19,16 +15,6 @@ const Home: NextPage<Props> = () => {
       </form>
     </div>
   );
-};
-
-Home.getInitialProps = async () => {
-  return {};
-}
-
-export const getServerSideProps = async ({ req, res, query }: GetServerSidePropsContext) => {
-  return {
-    props: {},
-  };
 };
 
 export default Home;

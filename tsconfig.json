@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server", "pages/hoge.js", "pages/index.js"],
   "exclude": ["node_modules"]
 }

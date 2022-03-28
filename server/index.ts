@@ -6,9 +6,8 @@ import registerRouter from "./register";
 import confirmRouter from "./confirm";
 import completeRouter from "./complete";
 
-const port = parseInt(process.env.PORT || "4000", 10);
+const port = parseInt(process.env.PORT || "3000", 10);
 const dev = process.env.NODE_ENV !== "production";
-
 
 const run = async () => {
   const app = next({

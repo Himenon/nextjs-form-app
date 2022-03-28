@@ -21,3 +21,9 @@ yarn build
 yarn start
 ```
 
+
+## References
+
+* https://nextjs.org/docs/advanced-features/custom-server
+* https://github.com/vercel/next.js/tree/canary/examples/custom-server-express
+* https://github.com/vercel/next.js/tree/canary/examples/custom-server-hapi

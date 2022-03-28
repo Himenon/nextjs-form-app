@@ -8,5 +8,6 @@
     "isolatedModules": false,
     "noEmit": false,
     "jsx": "react"
-  }
+  },
+  "include": ["server/**/*.ts"]
 }

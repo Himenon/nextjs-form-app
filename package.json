@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build && tsc --P tsconfig.server.json",
     "dev": "nodemon",
-    "dev:server": "ts-node -P tsconfig.common.json server",
+    "server": "ts-node -P tsconfig.server.json server",
     "format": "prettier --write **/**",
     "lint": "next lint",
-    "start": "NODE_ENV=production node server"
+    "start": "cross-env NODE_ENV=production yarn server"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -27,6 +27,7 @@
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
     "@types/uuid": "^8.3.4",
+    "cross-env": "^7.0.3",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.1",
     "nodemon": "^2.0.15",

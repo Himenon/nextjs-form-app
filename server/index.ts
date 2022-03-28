@@ -1,23 +1,21 @@
 import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
-import { parse } from 'url'
-import { inspect } from "util";
-
 import next from "next";
+import topRouter from ".//top";
+import confirmRouter from "./confirm";
+
 
 const port = parseInt(process.env.PORT || "4000", 10);
 const dev = process.env.NODE_ENV !== "production";
-const app = next({
-  dev,
-  dir: ".",
-});
 
-const handle = app.getRequestHandler();
 
-console.log(inspect(handle, { showHidden: true }));
-
-app.prepare().then(() => {
+const run = async () => {
+  const app = next({
+    dev,
+    dir: ".",
+  });
+  await app.prepare();
   const server = express();
   server.set("trust proxy", 1); // trust first proxy
   server.use(
@@ -32,13 +30,16 @@ app.prepare().then(() => {
   server.use(cookieParser());
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
-
+  const handler = app.getRequestHandler();
+  server.use("/", topRouter);
+  server.use("/confirm", confirmRouter);
   server.all("*", (req, res) => {
-    const parsedUrl = parse(req.url!, true)
-    return handle(req, res, parsedUrl);
+    return handler(req, res);
   });
 
   server.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
   });
-});
+};
+
+run();

@@ -2,9 +2,9 @@ import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import next from "next";
-import topRouter from ".//top";
+import registerRouter from "./register";
 import confirmRouter from "./confirm";
-import completeRouter from ".//complete";
+import completeRouter from "./complete";
 
 const port = parseInt(process.env.PORT || "4000", 10);
 const dev = process.env.NODE_ENV !== "production";
@@ -31,7 +31,8 @@ const run = async () => {
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
   const handler = app.getRequestHandler();
-  server.use("/", topRouter);
+
+  server.use("/register", registerRouter);
   server.use("/confirm", confirmRouter);
   server.use("/complete", completeRouter);
 

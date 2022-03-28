@@ -7,24 +7,26 @@ import Form, { FormProps } from "../components/form";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const token = generateToken();
-  setUser(req, { token });
-  const props: FormProps = {
-    formTitle: "入力画面",
-    message: "",
-    _token: token,
-    readOnly: false,
-    actinoUrl: "/confirm",
-    submitMessage: "確認する",
-  };
-
-  const Element = (
+const Page: React.VFC<FormProps> = (props) => {
+  return (
     <Layout>
       <Form {...props} />
     </Layout>
   );
-  const html = ReactDOM.renderToStaticMarkup(Element);
+};
+
+router.get("/", (req, res) => {
+  const token = generateToken();
+  setUser(req, { token });
+  const props: FormProps = {
+    formTitle: "Register",
+    message: "",
+    _token: token,
+    readOnly: false,
+    actinoUrl: "/confirm",
+    submitMessage: "Next Confirm",
+  };
+  const html = ReactDOM.renderToStaticMarkup(<Page {...props} />);
   setUser(req, { token });
   res.send(html);
 });

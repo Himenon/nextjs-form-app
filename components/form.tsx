@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 
 export interface FormProps {
   formTitle: string;
@@ -23,6 +24,7 @@ export const Form: React.VFC<FormProps> = (props) => {
           <input type="submit" value={props.submitMessage} />
         </p>
       </form>
+      <Link href="/">To Top</Link>
     </div>
   );
 };

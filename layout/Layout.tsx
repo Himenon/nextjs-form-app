@@ -18,5 +18,4 @@ export const Component: React.FC<Props> = (props) => {
   );
 };
 
-
 export default Component;

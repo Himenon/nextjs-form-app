@@ -1,23 +1,26 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import * as React from "react";
+import Link from "next/link";
 
 export interface CompleteProps {
   message: string;
+  nextPageUri: string;
 }
 
 export const Complete: React.VFC<CompleteProps> = (props) => {
   return (
     <div>
-      <h1>受付完了</h1>
+      <h1>Completed</h1>
       <div>
-        <h2>以下の内容受けつけました</h2>
+        <h2>The following information has been received</h2>
         <div>
-          <p>Message: {props.message}</p>
+          <p>Message</p>
+          <pre>
+            {props.message}
+          </pre>
         </div>
         <div>
-          <a href="/" rel="noopener">
-            Topへ
-          </a>
+          <Link href={props.nextPageUri}>To Next</Link>
         </div>
       </div>
     </div>

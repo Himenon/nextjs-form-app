@@ -7,23 +7,27 @@ import Complete, { CompleteProps } from "../components/complete";
 
 const router = express.Router();
 
+const Page: React.VFC<CompleteProps> = (props) => {
+  return (
+    <Layout>
+      <Complete {...props} />
+    </Layout>
+  );
+};
+
 router.post("/", (req, res) => {
   const user = getUser(req);
   if (user && user.token === req.body._token) {
     const token = generateToken();
     const props: CompleteProps = {
       message: req.body.message,
+      nextPageUri: "/register",
     };
-    const Element = (
-      <Layout>
-        <Complete {...props} />
-      </Layout>
-    );
-    const html = ReactDOM.renderToStaticMarkup(Element);
+    const html = ReactDOM.renderToStaticMarkup(<Page {...props} />);
     setUser(req, { token });
     res.status(303).send(html);
   } else {
-    res.send(`Sessionが切れました。<a href="/" rel="noopener">トップへ</a>`);
+    res.send(`Expired Session. <a href="/" rel="noopener">To Top</a>`);
   }
 });
 

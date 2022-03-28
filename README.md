@@ -4,7 +4,7 @@
 yarn install
 ```
 
-## Getting Started
+## Development Server
 
 ```bash
 yarn dev
@@ -13,5 +13,11 @@ yarn dev
 open http://localhost:3000
 ```
 
+## Production Server
 
+```bash
+yarn build
+
+yarn start
+```
 

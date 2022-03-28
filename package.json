@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build && tsc --P tsconfig.server.json",
+    "build": "next build && tsc -P tsconfig.server.json",
     "dev": "nodemon",
     "server": "ts-node -P tsconfig.server.json server",
     "format": "prettier --write **/**",
